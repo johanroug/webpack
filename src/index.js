@@ -1,5 +1,5 @@
-const sum = require('./sum');
+import sum from './sum.js';
 
-const total = sum(10,5);
+const total = sum(10,7);
 
 console.log(total);
