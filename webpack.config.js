@@ -14,17 +14,20 @@ const cleanConfig = new CleanWebpackPlugin(['build'], {
     }) 
 
 const config = {
-    entry: './src/index.js',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
+    },
+    resolve: {
+        extensions: [ '.ts' ]
     },
     devtool: "source-map",
     module: {
         rules: [
             {
-                use: 'babel-loader',
-                test: /\.js$/
+                test: /\.ts$/,
+                use: ['babel-loader', 'ts-loader']
             },
             {
                 test: /\.scss$/,
