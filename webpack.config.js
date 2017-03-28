@@ -6,7 +6,7 @@ const extractSass = new ExtractTextPlugin({
       });
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');     
-const cleanConfig = new CleanWebpackPlugin(['build'], {
+const cleanConfig = new CleanWebpackPlugin(['build/*'], {
       root: '',
       verbose: true,
       dry: false,
