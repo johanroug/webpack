@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
@@ -26,6 +27,10 @@ const cleanConfig = new CleanWebpackPlugin(['build/*'], {
 // if we e.g. import jquery in our code, and also has it in our vendor.js file, remove them from our output bundle code, and only include it in vendor.js
 const optimize = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor'
+});
+
+const html = new HtmlWebpackPlugin({ //Automaticly make index.html for us, and use our own index.html as a template. This means that it will only fill out what we didn't add. Fx our stylesheet and javascript files.
+  template: './src/index.html'
 });
 
 
@@ -69,7 +74,8 @@ const config = {
   plugins: [ // Our plugin from the top, are called here
     extractSass,
     cleanConfig,
-    optimize
+    optimize,
+    html
   ]
 };
 
