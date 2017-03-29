@@ -5,13 +5,13 @@ const extractSass = new ExtractTextPlugin({
         filename: 'styles.[contenthash].css'
       });
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');     
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const cleanConfig = new CleanWebpackPlugin(['build/*'], {
       root: '',
       verbose: true,
       dry: false,
       exclude: ['example.js']
-    }) 
+    })
 
 const config = {
     entry: './src/index.ts',
@@ -20,7 +20,7 @@ const config = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: [ '.ts' ]
+        extensions: [ '.ts', '.js' ]
     },
     devtool: "source-map",
     module: {
