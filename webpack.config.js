@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const chalk = require('chalk');
+const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
@@ -32,6 +34,21 @@ const optimize = new webpack.optimize.CommonsChunkPlugin({
 const html = new HtmlWebpackPlugin({ //Automaticly make index.html for us, and use our own index.html as a template. This means that it will only fill out what we didn't add. Fx our stylesheet and javascript files.
   template: './src/index.html'
 });
+
+const progress = new SimpleProgressPlugin(
+  {
+    messageTemplate: ['Thinking   :bar', chalk.blue(':elapsed'), ':msg'].join(' '),
+    progressOptions: {
+      complete: chalk.bgGreen(' '),
+      incomplete: chalk.bgCyan(' '),
+      width: 20,
+      total: 100,
+      clear: false
+    }
+  }
+);
+
+
 
 
 //*************WEBPACK CONFIG***************************************************************/
@@ -72,6 +89,7 @@ const config = {
     ]
   },
   plugins: [ // Our plugin from the top, are called here
+    progress,
     extractSass,
     cleanConfig,
     optimize,
