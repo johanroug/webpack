@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "serve": "webpack-dev-server",
+    "serve": "webpack-dev-server --open",
     "prod": "webpack -p"
   },
   "author": "",

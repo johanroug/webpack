@@ -37,7 +37,7 @@ const html = new HtmlWebpackPlugin({ //Automaticly make index.html for us, and u
 
 const progress = new SimpleProgressPlugin(
   {
-    messageTemplate: ['Thinking   :bar', chalk.inverse(':elapsed sec'), ':msg'].join(' '),
+    messageTemplate: ['Thinking   :bar', chalk.bold.bgBlue.yellow(':elapsed sec'), ':msg'].join(' '),
     progressOptions: {
       complete: chalk.bgGreen(' '),
       incomplete: chalk.bgWhite(' '),
