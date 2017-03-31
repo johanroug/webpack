@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const chalk = require('chalk');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 
+
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
