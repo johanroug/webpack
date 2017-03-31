@@ -4,13 +4,7 @@ export class Another {
   constructor() {
     this.another2 = "hej hej";
   }
-  myFunc(number, ...theRest) {
+  myFunc(number) {
     console.log("hello from another.ts" + number);
-    console.log(theRest);
-    let total = 0;
-    for( var i = 0; i < theRest.length; i ++) {
-      total +=  theRest[i];
-    }
-    console.log(total);
   }
 }
