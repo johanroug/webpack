@@ -120,7 +120,7 @@ module.exports = function makeWebpackConfig() {
       {
         test: /\.(scss|sass)$/,
         exclude: root('src', 'app'),
-        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: [{loader: 'css-loader', options: { minimize: true }}, 'postcss-loader', 'sass-loader']})
+        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: [{loader: 'css-loader', options: { minimize: true, discardComments: {removeAll: true} }}, 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
       {test: /\.(scss|sass)$/, exclude: root('src', 'styles'), loader: 'raw-loader!postcss-loader!sass-loader'},
