@@ -8,9 +8,5 @@ import '../styles/styles.scss';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title: string;
 
-  constructor() {
-    this.title = "johan";
-  }
 }
