@@ -8,5 +8,5 @@ import '../styles/styles.scss';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
+  link: string = "recipes";
 }

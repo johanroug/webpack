@@ -1,10 +1,10 @@
-<app-header></app-header> <br>
+<app-header (chosenLink)="link = $event"></app-header> <br>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="link === 'recipes'"></app-recipes>
+      <app-shopping-list *ngIf="link === 'shoppinglist'"></app-shopping-list>
     </div>
   </div>
 </div>
