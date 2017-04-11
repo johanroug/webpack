@@ -9,4 +9,8 @@ export class ShoppingListComponent {
     new Ingredient("Suckar", 2),
     new Ingredient("Apples", 10)
   ];
+
+  addIngredient(item: Ingredient) {
+    this.ingredients.push(item);
+  }
 }
