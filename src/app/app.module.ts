@@ -1,3 +1,4 @@
+import { DropdownDirective } from './components/shared/dropdown.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './components/shopping-list/shopping-edit/shopping-edit.component';
@@ -26,7 +27,8 @@ import { AppComponent } from './app.component';
     RecipeItemComponent,
     RecipeDetailComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    DropdownDirective
   ],
   providers: [],
   bootstrap: [AppComponent]

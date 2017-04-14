@@ -89,7 +89,6 @@
     "directive-selector": [
       true,
       "attribute",
-      "my",
       "camelCase"
     ],
     "component-selector": [
@@ -107,8 +106,7 @@
     "directive-class-suffix": true,
     "pipe-naming": [
       true,
-      "camelCase",
-      "my"
+      "camelCase"
     ],
     "no-attribute-parameter-decorator": true,
     "no-forward-ref": true,
