@@ -1,3 +1,4 @@
+import { ShoppinglistService } from './shopping-list.service';
 import { Ingredient } from '../shared/ingredient.model';
 import { Component } from '@angular/core';
 @Component({
@@ -5,12 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './shopping-list.component.html'
 })
 export class ShoppingListComponent {
-  ingredients: Ingredient[] = [
-    new Ingredient("Suckar", 2),
-    new Ingredient("Apples", 10)
-  ];
+  ingredients: Ingredient[];
 
-  addIngredient(item: Ingredient) {
-    this.ingredients.push(item);
+  constructor(private shoppinglistService: ShoppinglistService) {
+    this.ingredients = this.shoppinglistService.getIngredients();
+    this.shoppinglistService.ingredientsChanged.subscribe((ingredientData: Ingredient[]) => {
+      this.ingredients = ingredientData;
+    });
   }
 }
