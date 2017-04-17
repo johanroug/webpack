@@ -9,7 +9,7 @@ $(function() {
 loadGoogleMapsAPI({
   key: 'write key here',
   language: 'da'
-}).then((googleMaps) => {
+}).then(() => {
   let vanlose = { lat: 55.695142, lng: 12.498335 };
   let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 17,
