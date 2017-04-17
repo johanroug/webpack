@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {},
   "scripts": {
     "build": "webpack",
     "serve": "webpack-dev-server --open",
@@ -15,6 +16,8 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "@types/jquery": "^2.0.41",
+    "@types/lodash": "^4.14.62",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
