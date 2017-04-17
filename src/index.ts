@@ -1,5 +1,6 @@
 import * as $ from 'jquery';
-import loadGoogleMapsAPI from 'load-google-maps-api';
+import {} from 'googlemaps'; // @typings for google maps
+import loadGoogleMapsAPI from 'load-google-maps-api'; // Simply takes below code and injects into scripttag on load
 
 import './styles/styles.scss';
 
