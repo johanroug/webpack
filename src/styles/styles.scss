@@ -1,12 +1,6 @@
 @import "variable";
 
-.johan {
-  background: red;
-  .otto {
-    background: blue;
-  }
-}
-
-body {
-  background: yellow;
+#map {
+  height: 400px;
+  width: 100%;
 }

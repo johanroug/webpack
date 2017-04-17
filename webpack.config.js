@@ -9,7 +9,8 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
   "jquery",
-  "lodash"
+  "lodash",
+  "load-google-maps-api"
 ];
 
 // Extract styles

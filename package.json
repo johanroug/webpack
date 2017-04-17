@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.2.1",
+    "load-google-maps-api": "0.0.3",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "@types/google-maps": "^3.2.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",

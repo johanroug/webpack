@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/google-maps@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@types/google-maps/-/google-maps-3.2.0.tgz#804a3ae9ac9265b4e0d1508b5b9b894867974f82"
+  dependencies:
+    "@types/googlemaps" "*"
+
+"@types/googlemaps@*":
+  version "3.26.8"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.26.8.tgz#e32599dcd50c23c0a541ea0127fbef5bd8f7e721"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -1697,6 +1707,10 @@ globule@^1.0.0:
     glob "~7.1.1"
     lodash "~4.16.4"
     minimatch "~3.0.2"
+
+google-maps@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/google-maps/-/google-maps-3.2.1.tgz#c0758f2b175a4a8d110c1abb1fc4cc38c1176e06"
 
 graceful-fs@^4.1.2:
   version "4.1.11"
