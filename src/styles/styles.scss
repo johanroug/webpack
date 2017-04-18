@@ -1,6 +1,12 @@
 @import "variable";
 
+body {
+  background: #000;
+}
 #map {
   height: 400px;
   width: 100%;
+  > div {
+    background: #000 !important;
+  }
 }
