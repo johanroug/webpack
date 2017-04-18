@@ -5,9 +5,8 @@
   "main": "index.js",
   "repository": {},
   "scripts": {
-    "build": "webpack",
     "serve": "webpack-dev-server --open",
-    "prod": "webpack -p"
+    "build": "webpack -p"
   },
   "author": "",
   "license": "ISC",

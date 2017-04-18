@@ -52,7 +52,7 @@ const progress = new SimpleProgressPlugin(
 
 
 //*************WEBPACK CONFIG***************************************************************/
-const config = {
+module.exports = {
   entry: {
     bundle: './src/index.ts', // Our whole codebase starts here. Our bundle will be called "bundle"
     vendor: VENDOR_LIBS // Our vendors, and output file will be named "vendor"
@@ -96,5 +96,3 @@ const config = {
     html
   ]
 };
-
-module.exports = config;
