@@ -2,13 +2,7 @@
 # yarn lockfile v1
 
 
-"@types/google-maps@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@types/google-maps/-/google-maps-3.2.0.tgz#804a3ae9ac9265b4e0d1508b5b9b894867974f82"
-  dependencies:
-    "@types/googlemaps" "*"
-
-"@types/googlemaps@*":
+"@types/googlemaps@^3.26.8":
   version "3.26.8"
   resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.26.8.tgz#e32599dcd50c23c0a541ea0127fbef5bd8f7e721"
 
@@ -1716,10 +1710,6 @@ globule@^1.0.0:
     lodash "~4.16.4"
     minimatch "~3.0.2"
 
-google-maps@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/google-maps/-/google-maps-3.2.1.tgz#c0758f2b175a4a8d110c1abb1fc4cc38c1176e06"
-
 graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -2202,6 +2192,10 @@ lcid@^1.0.0:
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
   dependencies:
     invert-kv "^1.0.0"
+
+load-google-maps-api@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/load-google-maps-api/-/load-google-maps-api-0.0.3.tgz#9cac15204227946b699b0d1bfd7426f3809f436d"
 
 load-json-file@^1.0.0:
   version "1.1.0"
