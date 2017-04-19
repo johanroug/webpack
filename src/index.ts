@@ -3,6 +3,15 @@ import './styles/styles.scss';
 import sum from './modules/sum';
 import {Another} from './modules/another';
 
+var johan = new Promise((resolve, reject) => {
+  let test = "hej";
+  resolve(test);
+});
+
+
+johan.then(() => {
+  console.log("det virker");
+});
 
 /************************** why let ***************************/
 // https://basarat.gitbooks.io/typescript/docs/let.html

@@ -8,7 +8,6 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
-  "babel-polyfill",
   "jquery",
   "lodash"
 ];
@@ -31,6 +30,10 @@ const cleanConfig = new CleanWebpackPlugin(['build/*'], {
 // if we e.g. import jquery in our code, and also has it in our vendor.js file, remove them from our output bundle code, and only include it in vendor.js
 const optimize = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor'
+});
+
+const promisePolyfill = new webpack.ProvidePlugin({
+  Promise: 'es6-promise-promise'
 });
 
 const html = new HtmlWebpackPlugin({ //Automaticly make index.html for us, and use our own index.html as a template. This means that it will only fill out what we didn't add. Fx our stylesheet and javascript files.
@@ -69,7 +72,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: ['ts-loader'],
         exclude: /node_modules/
       },
       {
@@ -90,6 +93,7 @@ module.exports = {
   },
   plugins: [ // Our plugin from the top, are called here
     progress,
+    promisePolyfill,
     extractSass,
     cleanConfig,
     optimize,
