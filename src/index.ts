@@ -31,9 +31,9 @@ console.log(foo2); // 123
 
 
 /************************** Using jquery *************************/
-$(function() {
+/*$(function() {
   $('body').css('background', 'orange');
-});
+});*/
 
 
 /************************** Use outside method not in class ******/

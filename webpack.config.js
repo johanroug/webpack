@@ -93,11 +93,14 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|woff|eot|ttf|svg|gif)$/,
+        test: /\.(png|woff|woff2|jpg|jpeg|eot|ttf|svg|gif)$/,
         use: [
           {
           loader: 'url-loader',
-          options: {limit: 40000}
+          options: {
+            limit: 1000, // if less than 10 kb, add base64 encoded image to css
+            name: "assets/[hash].[ext]" // if more than 10 kb move to this folder in build using file-loader
+          }
         }]
       }
     ]
