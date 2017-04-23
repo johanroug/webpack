@@ -8,7 +8,7 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
-  "jquery",
+  "jquery", // add jquery to vendor bundle
   "lodash"
 ];
 
@@ -62,10 +62,13 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].js' // output bundle.js and vendor.js
+    filename: '[name].[chunkhash].js' // output bundle.js and vendor.js
   },
   resolve: {
     extensions: ['.ts', '.js']
+  },
+  externals: {
+    // jquery: 'jQuery' // use like this if you want jquery from CDN. Add it to index.html
   },
   devtool: "source-map",
   module: {
