@@ -91,6 +91,14 @@ module.exports = {
             }
           }]
         })
+      },
+      {
+        test: /\.(png|woff|eot|ttf|svg|gif)$/,
+        use: [
+          {
+          loader: 'url-loader',
+          options: {limit: 40000}
+        }]
       }
     ]
   },
