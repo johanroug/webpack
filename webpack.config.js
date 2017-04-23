@@ -9,7 +9,8 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
   "jquery", // add jquery to vendor bundle
-  "lodash"
+  "lodash",
+  "./src/styles/slick/slick.min.js"
 ];
 
 // Extract styles
@@ -91,6 +92,14 @@ module.exports = {
             }
           }]
         })
+      },
+      {
+        test: /\.(png|woff|eot|ttf|svg|gif)$/,
+        use: [
+          {
+          loader: 'url-loader',
+          options: {limit: 40000}
+        }]
       }
     ]
   },
