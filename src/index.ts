@@ -87,3 +87,9 @@ for (let item of items) { // Use on on arrau and string
 let lyrics = 'Never gonna give you up';
 let html = `<div>${lyrics}</div>`;
 console.log(html);
+
+fetch('https://randomuser.me/api')
+  .then((data) => data.json())
+  .then((data) => {
+    console.log("johan2", data);
+  });

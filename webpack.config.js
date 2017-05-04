@@ -32,10 +32,6 @@ const optimize = new webpack.optimize.CommonsChunkPlugin({
   name: 'vendor'
 });
 
-const promisePolyfill = new webpack.ProvidePlugin({
-  Promise: 'es6-promise-promise'
-});
-
 const html = new HtmlWebpackPlugin({ //Automaticly make index.html for us, and use our own index.html as a template. This means that it will only fill out what we didn't add. Fx our stylesheet and javascript files.
   template: './src/index.html'
 });
@@ -52,6 +48,11 @@ const progress = new SimpleProgressPlugin(
     }
   }
 );
+
+const providers = new webpack.ProvidePlugin({
+    Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise',
+    fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+});
 
 
 //*************WEBPACK CONFIG***************************************************************/
@@ -107,7 +108,7 @@ module.exports = {
   },
   plugins: [ // Our plugin from the top, are called here
     progress,
-    promisePolyfill,
+    providers,
     extractSass,
     cleanConfig,
     optimize,
