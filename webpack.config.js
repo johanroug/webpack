@@ -8,7 +8,7 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 //*************PLUGINS***************All called in bottom of file***************************************/
 // List of vendor JS libraries we want in a seperate vendor.js file
 const VENDOR_LIBS = [ // this takes our vendor js files that we want in a seperate file
-  "jquery",
+  // "jquery",
   "lodash",
   "babel-polyfill",
   "load-google-maps-api"
@@ -55,7 +55,7 @@ const progress = new SimpleProgressPlugin(
 //*************WEBPACK CONFIG***************************************************************/
 module.exports = {
   entry: {
-    bundle: './src/index.ts', // Our whole codebase starts here. Our bundle will be called "bundle"
+    bundle: './src/index.js', // Our whole codebase starts here. Our bundle will be called "bundle"
     vendor: VENDOR_LIBS // Our vendors, and output file will be named "vendor"
   },
   output: {
@@ -63,14 +63,14 @@ module.exports = {
     filename: '[name].js' // output bundle.js and vendor.js
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.js']
   },
   devtool: "source-map",
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: ['babel-loader', 'ts-loader'],
+        test: /\.js$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
