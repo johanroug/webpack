@@ -10,10 +10,10 @@ loadGoogleMapsAPI({
 
   $( ()=> {
     const json = [
-      { id: 12, name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
-      { id: 2, name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
-      { id: 3, name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
-      { id: 21, name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
+      { id: 12, moreInfo: 'dette er cool01', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
+      { id: 2, moreInfo: 'dette er cool02', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
+      { id: 3, moreInfo: 'dette er cool03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
+      { id: 21, moreInfo: 'dette er cool04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
     ];
 
     // options for map
@@ -52,11 +52,21 @@ loadGoogleMapsAPI({
     });
 
     function addMarker(place) {
-      markers.push(new google.maps.Marker({ 
+      const marker = new google.maps.Marker({ 
         map: map,
-        title: place.name,
-        position: place.position
-      }));
+        position: place.position,
+        details: {
+          name: place.name,
+          myinfo: place.moreInfo
+        }
+      });
+
+      markers.push(marker);
+
+      // get details on click
+      marker.addListener('click', function(event) {
+        console.log(this.details);
+      });
     }
     
     function deleteMarkers() {
