@@ -10,8 +10,8 @@ loadGoogleMapsAPI({
 
   $( ()=> {
     const json = [
-      { id: 12, moreInfo: 'dette er cool01', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
-      { id: 2, moreInfo: 'dette er cool02', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
+      { id: 12, moreInfo: 'hej Beth', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
+      { id: 2, moreInfo: 'hej Otto. Hvordan går det', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
       { id: 3, moreInfo: 'dette er cool03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
       { id: 21, moreInfo: 'dette er cool04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
     ];
@@ -27,6 +27,7 @@ loadGoogleMapsAPI({
 
     const mysearch = $('#mysearch');
     let markers = [];
+    let localBounds = [];
 
     // do search
     mysearch.on('keyup', (value) => {
@@ -43,15 +44,24 @@ loadGoogleMapsAPI({
           return -1 < result.toString().toLowerCase().indexOf( searchVal );
         });    
 
+        let bounds = new google.maps.LatLngBounds()          
+        
         // Create a marker for each place.
-        positions.forEach(function(place) {              
+        positions.forEach(function(place) {           
           addMarker(place); 
         });
+        
+        for (let i  = 0; i < localBounds.length; i ++) {
+          bounds.extend(localBounds[i]);        
+        }
+        map.fitBounds(bounds);
+        map.panToBounds(bounds);
+        console.log(localBounds)
       }      
 
     });
 
-    function addMarker(place) {
+    function addMarker( place ) {          
       const marker = new google.maps.Marker({ 
         map: map,
         position: place.position,
@@ -59,14 +69,16 @@ loadGoogleMapsAPI({
           name: place.name,
           myinfo: place.moreInfo
         }
-      });
-
+      });      
+      
       markers.push(marker);
+      localBounds.push(place.position);
 
       // get details on click
       marker.addListener('click', function(event) {
         console.log(this.details);
       });
+
     }
     
     function deleteMarkers() {
@@ -74,6 +86,7 @@ loadGoogleMapsAPI({
         markers[i].setMap(null);
       }
       markers = [];
+      localBounds = [];
     }
 
   });
