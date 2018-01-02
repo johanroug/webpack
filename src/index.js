@@ -10,15 +10,16 @@ loadGoogleMapsAPI({
 
   $( ()=> {
     const json = [
-      { id: 12, moreInfo: 'hej Beth', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
-      { id: 2, moreInfo: 'hej Otto. Hvordan går det', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
-      { id: 3, moreInfo: 'dette er cool03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
-      { id: 21, moreInfo: 'dette er cool04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
+      { id: 12, moreInfo: 'test 01', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
+      { id: 2, moreInfo: 'test 02', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
+      { id: 3, moreInfo: 'test 03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
+      { id: 21, moreInfo: 'test 04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
     ];
 
     // options for map
     let options = {
-      zoom: 17,
+      maxZoom: 17,
+      zoom: 1,
       center: {lat: 55.695142, lng: 12.498335}
     }
 
@@ -44,25 +45,26 @@ loadGoogleMapsAPI({
           return -1 < result.toString().toLowerCase().indexOf( searchVal );
         });    
 
-        let bounds = new google.maps.LatLngBounds()          
-        
-        // Create a marker for each place.
-        positions.forEach(function(place) {           
-          addMarker(place); 
-        });
-        
-        for (let i  = 0; i < localBounds.length; i ++) {
-          bounds.extend(localBounds[i]);        
+        if ( positions.length > 0 ) {
+          let bounds = new google.maps.LatLngBounds();          
+          
+          // Create a marker for each place.
+          positions.forEach(function(place) {           
+            addMarker(place); 
+          });
+          
+          for (let i  = 0; i < localBounds.length; i ++) {
+            bounds.extend(localBounds[i]);        
+          }
+          map.fitBounds(bounds);
+          map.panToBounds(bounds);
         }
-        map.fitBounds(bounds);
-        map.panToBounds(bounds);
-        console.log(localBounds)
       }      
 
     });
 
     function addMarker( place ) {          
-      const marker = new google.maps.Marker({ 
+      const marker = new google.maps.Marker({       
         map: map,
         position: place.position,
         details: {
