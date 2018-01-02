@@ -1,6 +1,6 @@
 import loadGoogleMapsAPI from 'load-google-maps-api'; // Simply takes below code and injects into scripttag on load
 import './styles/styles.scss';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 loadGoogleMapsAPI({
   key: 'AIzaSyBjvbaEopZYsBYCh6iWiKZYf_jSB8dAUFM',
@@ -8,90 +8,89 @@ loadGoogleMapsAPI({
   libraries: ['places']
 }).then(() => {
 
-  $( ()=> {
-    const json = [
-      { id: 12, moreInfo: 'test 01', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
-      { id: 2, moreInfo: 'test 02', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
-      { id: 3, moreInfo: 'test 03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
-      { id: 21, moreInfo: 'test 04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
-    ];
+  // DATA
+  const json = [
+    { id: 12, moreInfo: 'test 01', name: 'hi 1', position: {lat: 55.695142, lng: 12.498335} },
+    { id: 2, moreInfo: 'test 02', name: 'hi 2', position: {lat: 55.695599, lng: 12.500282} },
+    { id: 3, moreInfo: 'test 03', name: 'hi 3', position: {lat: 55.695584, lng: 12.501427} },
+    { id: 21, moreInfo: 'test 04', name: 'hi 3', position: {lat: 55.696584, lng: 12.501227} }
+  ];
 
-    // options for map
-    let options = {
-      maxZoom: 17,
-      zoom: 1,
-      center: {lat: 55.695142, lng: 12.498335}
-    }
+  const mysearch =  document.getElementById("mysearch");
+  let markers = [];
+  let localBounds = [];
 
-    // make map
-    const map = new google.maps.Map(document.getElementById("map"), options);
+  const options = { // options for map
+    maxZoom: 17,
+    zoom: 1,
+    center: {lat: 55.695142, lng: 12.498335}
+  }
 
-    const mysearch = $('#mysearch');
-    let markers = [];
-    let localBounds = [];
+  const map = new google.maps.Map(document.getElementById("map"), options); // map
 
-    // do search
-    mysearch.on('keyup', (value) => {
-      // Clear out the old markers.
-      deleteMarkers();
+  // do search
+  mysearch.onkeyup = function(value) {
+    // Clear out the old markers.
+    deleteMarkers();
 
-      // search value
-      const searchVal = value.target.value;
-      
-      if ( searchVal !== '') {        
-        // filter results
-        const positions = json.filter(item => {
-          const result = item.id;          
-          return -1 < result.toString().toLowerCase().indexOf( searchVal );
-        });    
+    // Do search
+    search(value);
+  };
 
-        if ( positions.length > 0 ) {
-          let bounds = new google.maps.LatLngBounds();          
-          
-          // Create a marker for each place.
-          positions.forEach(function(place) {           
-            addMarker(place); 
-          });
-          
-          for (let i  = 0; i < localBounds.length; i ++) {
-            bounds.extend(localBounds[i]);        
-          }
-          map.fitBounds(bounds);
-          map.panToBounds(bounds);
+  function search(value) {
+    const searchVal = value.target.value;
+    
+    if ( searchVal !== '') {        
+      // filter results
+      const positions = json.filter(item => {
+        const result = item.id;          
+        return -1 < result.toString().toLowerCase().indexOf( searchVal );
+      });    
+
+      if ( positions.length > 0 ) {
+        let bounds = new google.maps.LatLngBounds();          
+        
+        // Create a marker for each place.
+        positions.forEach(function(place) {           
+          addMarker(place); 
+        });
+        
+        for (let i  = 0; i < localBounds.length; i ++) {
+          bounds.extend(localBounds[i]);        
         }
-      }      
+        map.fitBounds(bounds);
+        map.panToBounds(bounds);
+      }
+    }      
+  }
 
+  function addMarker( place ) {          
+    const marker = new google.maps.Marker({       
+      map: map,
+      position: place.position,
+      details: {
+        name: place.name,
+        myinfo: place.moreInfo
+      }
+    });      
+    
+    markers.push(marker);
+    localBounds.push(place.position);
+
+    // get details on click
+    marker.addListener('click', function(event) {
+      console.log(this.details);
     });
 
-    function addMarker( place ) {          
-      const marker = new google.maps.Marker({       
-        map: map,
-        position: place.position,
-        details: {
-          name: place.name,
-          myinfo: place.moreInfo
-        }
-      });      
-      
-      markers.push(marker);
-      localBounds.push(place.position);
-
-      // get details on click
-      marker.addListener('click', function(event) {
-        console.log(this.details);
-      });
-
+  }
+  
+  function deleteMarkers() {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
     }
-    
-    function deleteMarkers() {
-      for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
-      markers = [];
-      localBounds = [];
-    }
-
-  });
+    markers = [];
+    localBounds = [];
+  }
 
   
 
